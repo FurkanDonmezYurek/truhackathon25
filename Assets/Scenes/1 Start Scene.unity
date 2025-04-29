@@ -1756,14 +1756,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dependencyStatus: 0
-  emailLoginField: {fileID: 0}
-  passwordLoginField: {fileID: 0}
+  emailLoginField: {fileID: 273633906}
+  passwordLoginField: {fileID: 567243134}
   warningLoginText: {fileID: 1577190806}
   confirmLoginText: {fileID: 500262186}
-  usernameRegisterField: {fileID: 0}
-  emailRegisterField: {fileID: 0}
-  passwordRegisterField: {fileID: 0}
-  passwordRegisterVerifyField: {fileID: 0}
+  usernameRegisterField: {fileID: 65334263}
+  emailRegisterField: {fileID: 895441450}
+  passwordRegisterField: {fileID: 1669873508}
+  passwordRegisterVerifyField: {fileID: 1059862293}
   warningRegisterText: {fileID: 2053121852}
 --- !u!4 &400836662
 Transform:
