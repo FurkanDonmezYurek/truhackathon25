@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "truhackathon25.sln"
+    "dotnet.defaultSolution": "truhackathon25.sln",
+    "editor.formatOnSave": true,
 }
