@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Destroyer
   - Apple
+  - AppleSpawnPosition
   layers:
   - Default
   - TransparentFX
