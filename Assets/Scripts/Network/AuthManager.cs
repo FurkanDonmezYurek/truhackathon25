@@ -5,6 +5,7 @@ using Firebase.Auth;
 using TMPro;
 using System.Threading.Tasks;
 using Firebase.Firestore;
+using System.Collections.Generic;
 
 public class AuthManager : MonoBehaviour
 {
@@ -57,36 +58,103 @@ public class AuthManager : MonoBehaviour
             });
     }
 
-    // public void s()
-    // {
-    //     CollectionReference data = db.Collection("adminlist");
+    public void s()
+    {
+        // "list" koleksiyonuna referans alıyoruz
+        CollectionReference data = db.Collection("memberlist");
 
-    //     // Koleksiyondaki tüm belgeleri alıyoruz
-    //     data.GetSnapshotAsync()
-    //         .ContinueWith(async task =>
-    //         {
-    //             if (task.IsCompleted)
-    //             {
-    //                 Query query = data.OrderBy("Name");
-    //                 // Koleksiyondaki tüm belgeler burada
-    //                 QuerySnapshot snapshot = await query.GetSnapshotAsync();
+        // Koleksiyondaki tüm belgeleri alıyoruz
+        data.GetSnapshotAsync()
+            .ContinueWith(async task =>
+            {
+                if (task.IsCompleted)
+                {
+                    Query query = data.OrderBy("userName");
+                    // Koleksiyondaki tüm belgeler burada
+                    QuerySnapshot snapshot = await query.GetSnapshotAsync();
 
-    //                 // Her bir belgeyi döngü ile okuyoruz
-    //                 foreach (DocumentSnapshot document in snapshot.Documents)
-    //                 {
-    //                     // Verileri Dictionary olarak alıyoruz
-    //                     System.Collections.Generic.Dictionary<string, object> Data =
-    //                         document.ToDictionary();
+                    // Her bir belgeyi döngü ile okuyoruz
+                    foreach (DocumentSnapshot document in snapshot.Documents)
+                    {
+                        // Verileri Dictionary olarak alıyoruz
+                        Dictionary<string, object> Data = document.ToDictionary();
 
-    //                     Debug.Log(Data.Values);
-    //                 }
-    //             }
-    //             else
-    //             {
-    //                 Debug.LogError("Veri okunurken bir hata oluştu: " + task.Exception);
-    //             }
-    //         });
-    // }
+                        // Verileri kontrol edip Product nesnesine dönüştürüyoruz
+                        if (
+                            Data.ContainsKey("userName")
+                            && Data.ContainsKey("status")
+                            && Data.ContainsKey("calibration")
+                            && Data.ContainsKey("hasCurrentTask")
+                            && Data.ContainsKey("bestScore")
+                            && Data.ContainsKey("bestTime")
+                        )
+                        {
+                            if (Data["userName"].ToString() == User.DisplayName)
+                            {
+                                string userName = Data["userName"].ToString();
+                                string status = Data["status"].ToString();
+                                float calibration = float.Parse(Data["calibration"].ToString());
+                                string hasCurrentTask = Data["hasCurrentTask"].ToString();
+                                string bestScore = Data["bestScore"].ToString();
+                                string bestTime = Data["bestScore"].ToString();
+
+                                Debug.Log(
+                                    userName
+                                        + status
+                                        + calibration
+                                        + hasCurrentTask
+                                        + bestScore
+                                        + bestTime
+                                );
+                            }
+                            else
+                            {
+                                SaveData("sa", "sa", 12f, "sa", "sa", "gfr");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Veri okunurken bir hata oluştu: " + task.Exception);
+                }
+            });
+    }
+
+    public void SaveData(
+        string userName,
+        string status,
+        float calibration,
+        string hasCurrentTask,
+        string bestScore,
+        string bestTime
+    )
+    {
+        DocumentReference docRef = db.Collection("memberlist").Document(name);
+        Dictionary<string, object> Data = new Dictionary<string, object>
+        {
+            { "userName", userName },
+            { "status", status },
+            { "calibration", calibration.ToString() },
+            { "hasCurrentTask", hasCurrentTask },
+            { "bestScore", bestScore },
+            { "bestTime", bestTime }
+        };
+
+        docRef
+            .SetAsync(Data)
+            .ContinueWith(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    Debug.Log("Data saved to Firestore.");
+                }
+                else
+                {
+                    Debug.LogError("Error saving data: " + task.Exception);
+                }
+            });
+    }
 
     //Function for the login button
     public void LoginButton()
