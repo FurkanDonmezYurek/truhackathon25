@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Firebase.Firestore;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Firebase.Extensions;
 
 public class AuthManager : MonoBehaviour
 {
@@ -33,91 +34,85 @@ public class AuthManager : MonoBehaviour
 
     FirebaseFirestore db;
 
-    void Awake()
+    // void Awake()
+    // {
+    //     //Check that all of the necessary dependencies for Firebase are present on the system
+    //     FirebaseApp
+    //         .CheckAndFixDependenciesAsync()
+    //         .ContinueWith(task =>
+    //         {
+    //             dependencyStatus = task.Result;
+    //             if (dependencyStatus == DependencyStatus.Available)
+    //             {
+    //                 // Firebase başlatılıyor
+    //                 auth = FirebaseAuth.DefaultInstance;
+
+    //                 db = FirebaseFirestore.DefaultInstance;
+    //                 Debug.Log("Firebase başarıyla başlatıldı.");
+    //                 // s();
+    //                 ListeleBelgeleri("memberlist");
+    //             }
+    //             else
+    //             {
+    //                 Debug.LogError(
+    //                     "Could not resolve all Firebase dependencies: " + dependencyStatus
+    //                 );
+    //             }
+    //         });
+    // }
+
+    void Start()
     {
-        //Check that all of the necessary dependencies for Firebase are present on the system
         FirebaseApp
             .CheckAndFixDependenciesAsync()
-            .ContinueWith(task =>
+            .ContinueWithOnMainThread(task =>
             {
-                dependencyStatus = task.Result;
-                if (dependencyStatus == DependencyStatus.Available)
+                if (task.Result == DependencyStatus.Available)
                 {
-                    // Firebase başlatılıyor
                     auth = FirebaseAuth.DefaultInstance;
-
                     db = FirebaseFirestore.DefaultInstance;
-                    Debug.Log("Firebase başarıyla başlatıldı.");
-                    // s();
                 }
                 else
                 {
-                    Debug.LogError(
-                        "Could not resolve all Firebase dependencies: " + dependencyStatus
-                    );
+                    Debug.LogError("Firebase bağımlılıkları eksik: " + task.Result);
                 }
             });
     }
 
-    public void s()
+    void ListDocs(string listDocs)
     {
-        // "list" koleksiyonuna referans alıyoruz
-        CollectionReference data = db.Collection("memberlist");
-
-        // Koleksiyondaki tüm belgeleri alıyoruz
-        data.GetSnapshotAsync()
-            .ContinueWith(async task =>
+        db.Collection(listDocs)
+            .GetSnapshotAsync()
+            .ContinueWithOnMainThread(task =>
             {
-                if (task.IsCompleted)
+                if (task.IsFaulted)
                 {
-                    Query query = data.OrderBy("userName");
-                    // Koleksiyondaki tüm belgeler burada
-                    QuerySnapshot snapshot = await query.GetSnapshotAsync();
+                    Debug.LogError("Belge alınırken hata oluştu: " + task.Exception);
+                    return;
+                }
 
-                    // Her bir belgeyi döngü ile okuyoruz
-                    foreach (DocumentSnapshot document in snapshot.Documents)
+                QuerySnapshot belgeSnap = task.Result;
+                bool findDoc = false;
+                foreach (DocumentSnapshot document in belgeSnap.Documents)
+                {
+                    Debug.Log(document.Id);
+                    if (document.Id == User.DisplayName)
                     {
+                        findDoc = true;
+                        Debug.Log("sa");
                         // Verileri Dictionary olarak alıyoruz
                         Dictionary<string, object> Data = document.ToDictionary();
 
-                        // Verileri kontrol edip Product nesnesine dönüştürüyoruz
-                        if (
-                            Data.ContainsKey("userName")
-                            && Data.ContainsKey("status")
-                            && Data.ContainsKey("calibration")
-                            && Data.ContainsKey("hasCurrentTask")
-                            && Data.ContainsKey("bestScore")
-                            && Data.ContainsKey("bestTime")
-                        )
-                        {
-                            if (Data["userName"].ToString() == User.DisplayName)
-                            {
-                                string userName = Data["userName"].ToString();
-                                string status = Data["status"].ToString();
-                                float calibration = float.Parse(Data["calibration"].ToString());
-                                string hasCurrentTask = Data["hasCurrentTask"].ToString();
-                                string bestScore = Data["bestScore"].ToString();
-                                string bestTime = Data["bestScore"].ToString();
-
-                                Debug.Log(
-                                    userName
-                                        + status
-                                        + calibration
-                                        + hasCurrentTask
-                                        + bestScore
-                                        + bestTime
-                                );
-                            }
-                            else
-                            {
-                                SaveData("sa", "sa", 12f, "sa", "sa", "gfr");
-                            }
-                        }
+                        string status = Data["status"].ToString();
+                        float calibration = float.Parse(Data["calibration"].ToString());
+                        string hasCurrentTask = Data["hasCurrentTask"].ToString();
+                        string bestScore = Data["bestScore"].ToString();
+                        string bestTime = Data["bestScore"].ToString();
                     }
                 }
-                else
+                if (findDoc == false)
                 {
-                    Debug.LogError("Veri okunurken bir hata oluştu: " + task.Exception);
+                    //KALİBRASYONA GİR
                 }
             });
     }
@@ -131,10 +126,9 @@ public class AuthManager : MonoBehaviour
         string bestTime
     )
     {
-        DocumentReference docRef = db.Collection("memberlist").Document(name);
+        DocumentReference docRef = db.Collection("memberlist").Document(userName);
         Dictionary<string, object> Data = new Dictionary<string, object>
         {
-            { "userName", userName },
             { "status", status },
             { "calibration", calibration.ToString() },
             { "hasCurrentTask", hasCurrentTask },
@@ -155,6 +149,8 @@ public class AuthManager : MonoBehaviour
                     Debug.LogError("Error saving data: " + task.Exception);
                 }
             });
+
+        Debug.Log(userName + status + calibration + hasCurrentTask + bestScore + bestTime);
     }
 
     //Function for the login button
@@ -221,6 +217,7 @@ public class AuthManager : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
+            ListDocs("memberlist");
         }
     }
 
