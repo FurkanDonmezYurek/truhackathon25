@@ -54,24 +54,24 @@ MonoBehaviour:
   m_Name: Android
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 6192192407838872913}
-  - {fileID: -4322401616829823942}
-  - {fileID: 852590760337029324}
-  - {fileID: -4648061968396602348}
   - {fileID: 5057967254480260625}
-  - {fileID: 6949568689424453148}
   - {fileID: 813223708626744080}
-  - {fileID: -6968468584073322753}
-  - {fileID: 1408029547225146249}
-  - {fileID: -191402478376284177}
-  - {fileID: 3206243579775165099}
-  - {fileID: -2157305147561613111}
-  - {fileID: 7431611285961431090}
-  - {fileID: 3124218216186497894}
-  - {fileID: 531415811180588054}
-  - {fileID: -3354733395784781741}
+  - {fileID: 6949568689424453148}
   - {fileID: 2983646141251017032}
+  - {fileID: -6968468584073322753}
+  - {fileID: 3206243579775165099}
+  - {fileID: -191402478376284177}
   - {fileID: -2089149674818159639}
+  - {fileID: -4648061968396602348}
+  - {fileID: 3124218216186497894}
+  - {fileID: 7431611285961431090}
+  - {fileID: 1408029547225146249}
+  - {fileID: 852590760337029324}
+  - {fileID: -4322401616829823942}
+  - {fileID: -2157305147561613111}
+  - {fileID: 531415811180588054}
+  - {fileID: 6192192407838872913}
+  - {fileID: -3354733395784781741}
   - {fileID: 8923705127841050760}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
@@ -717,6 +717,26 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &4719581352133310862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b213d3e3c7f3109449eb46a4c8ee42f0, type: 3}
+  m_Name: XrPerformanceSettingsFeature WebGL
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: 
+  version: 
+  featureIdInternal: 
+  openxrExtensionStrings: 
+  company: 
+  priority: 0
+  required: 0
 --- !u!114 &5057967254480260625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,26 +814,26 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 5433948627492657274}
-  - {fileID: -8357255371675871066}
   - {fileID: 2308297747701910127}
-  - {fileID: 4613347354929878371}
   - {fileID: -5449824952514945600}
+  - {fileID: 4613347354929878371}
+  - {fileID: 8467112404897898129}
   - {fileID: 2703953997699390761}
+  - {fileID: 7207277771685982636}
+  - {fileID: -383122271345612916}
+  - {fileID: -8382810340613715655}
+  - {fileID: 4275874974012329678}
+  - {fileID: -6420602499331945993}
+  - {fileID: -7482150146524674504}
+  - {fileID: 2910227414526989491}
   - {fileID: 147376463377229628}
   - {fileID: 8641792631654064776}
-  - {fileID: -383122271345612916}
-  - {fileID: 2525103946872144988}
-  - {fileID: 4275874974012329678}
-  - {fileID: 7207277771685982636}
+  - {fileID: -8357255371675871066}
   - {fileID: 8907792626325731101}
-  - {fileID: 2910227414526989491}
-  - {fileID: -7482150146524674504}
   - {fileID: 8251116806974855977}
+  - {fileID: 5433948627492657274}
+  - {fileID: 2525103946872144988}
   - {fileID: -4873851468384460227}
-  - {fileID: -8382810340613715655}
-  - {fileID: 8467112404897898129}
-  - {fileID: -6420602499331945993}
   - {fileID: 6466633986022854826}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
@@ -1005,4 +1025,4 @@ MonoBehaviour:
   openxrExtensionStrings: XR_EXT_hand_tracking
   company: Unity
   priority: -100
-  required: 0 
+  required: 0
