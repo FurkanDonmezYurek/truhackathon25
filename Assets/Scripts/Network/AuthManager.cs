@@ -108,49 +108,14 @@ public class AuthManager : MonoBehaviour
                         string hasCurrentTask = Data["hasCurrentTask"].ToString();
                         string bestScore = Data["bestScore"].ToString();
                         string bestTime = Data["bestTime"].ToString();
+                        gameStartMenu.EnableMainMenu();
                     }
                 }
                 if (findDoc == false)
                 {
-                    //KALİBRASYONA GİR
+                    gameStartMenu.ConfigurationMenu();
                 }
             });
-    }
-
-    public void SaveData(
-        string userName,
-        string status,
-        float calibration,
-        string hasCurrentTask,
-        string bestScore,
-        string bestTime
-    )
-    {
-        DocumentReference docRef = db.Collection("memberlist").Document(userName);
-        Dictionary<string, object> Data = new Dictionary<string, object>
-        {
-            { "status", status },
-            { "calibration", calibration.ToString() },
-            { "hasCurrentTask", hasCurrentTask },
-            { "bestScore", bestScore },
-            { "bestTime", bestTime }
-        };
-
-        docRef
-            .SetAsync(Data)
-            .ContinueWith(task =>
-            {
-                if (task.IsCompleted)
-                {
-                    Debug.Log("Data saved to Firestore.");
-                }
-                else
-                {
-                    Debug.LogError("Error saving data: " + task.Exception);
-                }
-            });
-
-        Debug.Log(userName + status + calibration + hasCurrentTask + bestScore + bestTime);
     }
 
     //Function for the login button
