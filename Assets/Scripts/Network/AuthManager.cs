@@ -34,6 +34,7 @@ public class AuthManager : MonoBehaviour
 
     FirebaseFirestore db;
     public GameStartMenu gameStartMenu;
+    public UIManager uIManager;
 
     // void Awake()
     // {
@@ -72,6 +73,7 @@ public class AuthManager : MonoBehaviour
                 {
                     auth = FirebaseAuth.DefaultInstance;
                     db = FirebaseFirestore.DefaultInstance;
+                    uIManager.listTask("tasklist");
                 }
                 else
                 {

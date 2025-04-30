@@ -8,6 +8,8 @@ public class GameStartMenu : MonoBehaviour
     [Header("UI Pages")]
     public GameObject mainMenu;
     public GameObject LogInPanel;
+    public GameObject RegisterPanel;
+    public GameObject StartPanel;
     public GameObject options;
     public GameObject about;
 
@@ -44,11 +46,13 @@ public class GameStartMenu : MonoBehaviour
     public void StartGame()
     {
         HideAll();
-        SceneTransitionManager.singleton.GoToSceneAsync(2);
+        StartPanel.SetActive(true);
     }
 
     public void HideAll()
     {
+        LogInPanel.SetActive(false);
+        RegisterPanel.SetActive(false);
         mainMenu.SetActive(false);
         options.SetActive(false);
         about.SetActive(false);
@@ -57,6 +61,7 @@ public class GameStartMenu : MonoBehaviour
     public void EnableLogInPanel()
     {
         LogInPanel.SetActive(true);
+        RegisterPanel.SetActive(false);
         mainMenu.SetActive(false);
         options.SetActive(false);
         about.SetActive(false);
@@ -64,6 +69,8 @@ public class GameStartMenu : MonoBehaviour
 
     public void EnableMainMenu()
     {
+        LogInPanel.SetActive(false);
+        RegisterPanel.SetActive(false);
         mainMenu.SetActive(true);
         options.SetActive(false);
         about.SetActive(false);
@@ -80,10 +87,14 @@ public class GameStartMenu : MonoBehaviour
         mainMenu.SetActive(false);
         options.SetActive(true);
         about.SetActive(false);
+        LogInPanel.SetActive(false);
+        RegisterPanel.SetActive(false);
     }
 
     public void EnableAbout()
     {
+        LogInPanel.SetActive(false);
+        RegisterPanel.SetActive(false);
         mainMenu.SetActive(false);
         options.SetActive(false);
         about.SetActive(true);
