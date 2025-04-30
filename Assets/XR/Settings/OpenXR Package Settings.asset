@@ -1005,4 +1005,4 @@ MonoBehaviour:
   openxrExtensionStrings: XR_EXT_hand_tracking
   company: Unity
   priority: -100
-  required: 0
+  required: 0 
