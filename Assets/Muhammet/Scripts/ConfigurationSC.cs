@@ -153,7 +153,7 @@
 ////            }
 ////        }
 
-////        // A tusuna basma kontrolü
+////        // A tusuna basma kontrolï¿½
 ////        if (rightHand.TryGetFeatureValue(CommonUsages.primaryButton, out bool isPressed))
 ////        {
 ////            if (isPressed && !previousPressedState)
@@ -239,16 +239,16 @@
 
 //public class ConfigurationSC : MonoBehaviour
 //{
-//    public Transform shoulderReference;       // Omuz noktasýný temsil eden referans Transform
+//    public Transform shoulderReference;       // Omuz noktasï¿½nï¿½ temsil eden referans Transform
 //    public TextMeshProUGUI infoText;
 
-//    // Ölçülen en uç noktalar
+//    // ï¿½lï¿½ï¿½len en uï¿½ noktalar
 //    public Vector3 frontMaxDistanceRighthand;
 //    public Vector3 upMaxDistanceRighthand;
 //    public Vector3 rightMaxDistanceRighthand;
 //    public Vector3 leftMaxDistanceRighthand;
 
-//    // Yön baþýna ayrý ayrý saklayacaðýmýz en büyük mesafeler
+//    // Yï¿½n baï¿½ï¿½na ayrï¿½ ayrï¿½ saklayacaï¿½ï¿½mï¿½z en bï¿½yï¿½k mesafeler
 //    private float maxFrontDist = 0f;
 //    private float maxUpDist = 0f;
 //    private float maxRightDist = 0f;
@@ -260,7 +260,7 @@
 
 //    void Update()
 //    {
-//        // Ýlk olarak her frame’da güncellenen el pozisyonunu al
+//        // ï¿½lk olarak her frameï¿½da gï¿½ncellenen el pozisyonunu al
 //        UnityEngine.XR.InputDevice rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 //        if (rightHand.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 handPos))
 //        {
@@ -268,9 +268,9 @@
 
 //            switch (_step)
 //            {
-//                case 1: // 1. adým: ileri
+//                case 1: // 1. adï¿½m: ileri
 //                    {
-//                        // Karakterin ileri yönü boyunca projeksiyon (dot) al
+//                        // Karakterin ileri yï¿½nï¿½ boyunca projeksiyon (dot) al
 //                        float frontDist = Vector3.Dot(diff, shoulderReference.forward);
 //                        if (frontDist > maxFrontDist)
 //                        {
@@ -279,7 +279,7 @@
 //                        }
 //                        break;
 //                    }
-//                case 2: // 2. adým: yukarý
+//                case 2: // 2. adï¿½m: yukarï¿½
 //                    {
 //                        float upDist = Vector3.Dot(diff, shoulderReference.up);
 //                        if (upDist > maxUpDist)
@@ -289,7 +289,7 @@
 //                        }
 //                        break;
 //                    }
-//                case 3: // 3. adým: saða
+//                case 3: // 3. adï¿½m: saï¿½a
 //                    {
 //                        float rightDist = Vector3.Dot(diff, shoulderReference.right);
 //                        if (rightDist > maxRightDist)
@@ -299,9 +299,9 @@
 //                        }
 //                        break;
 //                    }
-//                case 4: // 4. adým: sola
+//                case 4: // 4. adï¿½m: sola
 //                    {
-//                        // sola gitme mesafesi negatif dot vereceði için tersine çevir
+//                        // sola gitme mesafesi negatif dot vereceï¿½i iï¿½in tersine ï¿½evir
 //                        float leftDist = -Vector3.Dot(diff, shoulderReference.right);
 //                        if (leftDist > maxLeftDist)
 //                        {
@@ -313,7 +313,7 @@
 //            }
 //        }
 
-//        // A tuþu ile adýmlar arasý geçiþ ve bilgilendirme
+//        // A tuï¿½u ile adï¿½mlar arasï¿½ geï¿½iï¿½ ve bilgilendirme
 //        if (rightHand.TryGetFeatureValue(CommonUsages.primaryButton, out bool isPressed))
 //        {
 //            if (isPressed && !previousPressedState && Time.time - _lastStepUpTime >= 0.5f)
@@ -324,20 +324,20 @@
 //                switch (_step)
 //                {
 //                    case 1:
-//                        infoText.text = "Elini olabildigince ileri götür ve tekrar A’ya bas";
+//                        infoText.text = "Elini olabildigince ileri gï¿½tï¿½r ve tekrar Aï¿½ya bas";
 //                        break;
 //                    case 2:
-//                        infoText.text = "Elini olabildigince yukarý götür ve tekrar A’ya bas";
+//                        infoText.text = "Elini olabildigince yukarï¿½ gï¿½tï¿½r ve tekrar Aï¿½ya bas";
 //                        break;
 //                    case 3:
-//                        infoText.text = "Elini olabildigince saða götür ve tekrar A’ya bas";
+//                        infoText.text = "Elini olabildigince saï¿½a gï¿½tï¿½r ve tekrar Aï¿½ya bas";
 //                        break;
 //                    case 4:
-//                        infoText.text = "Elini olabildigince sola götür ve tekrar A’ya bas";
+//                        infoText.text = "Elini olabildigince sola gï¿½tï¿½r ve tekrar Aï¿½ya bas";
 //                        break;
 //                    case 5:
-//                        // Ölçümler tamamlandý
-//                        infoText.text = "Tebrikler! Ölçümler tamamlandý.";
+//                        // ï¿½lï¿½ï¿½mler tamamlandï¿½
+//                        infoText.text = "Tebrikler! ï¿½lï¿½ï¿½mler tamamlandï¿½.";
 //                        CalculateShoulderAndCollider();
 //                        break;
 //                }
@@ -348,19 +348,19 @@
 
 //    private void CalculateShoulderAndCollider()
 //    {
-//        // Omuz noktasý
+//        // Omuz noktasï¿½
 //        Vector3 horizontalCenter = (rightMaxDistanceRighthand + leftMaxDistanceRighthand) / 2f;
 //        Vector3 verticalCenter = (upMaxDistanceRighthand + frontMaxDistanceRighthand) / 2f;
 //        Vector3 shoulderPos = (horizontalCenter + verticalCenter) / 2f;
 
-//        // Sphere Collider oluþtur
+//        // Sphere Collider oluï¿½tur
 //        GameObject colObj = new GameObject("ShoulderReachCollider");
 //        colObj.transform.position = shoulderPos;
 //        colObj.transform.parent = transform;
 //        SphereCollider sphere = colObj.AddComponent<SphereCollider>();
 //        sphere.isTrigger = true;
 
-//        // Yarýçapý dört yöndeki maksimum uzaklýklarýn ortalamasý olarak al
+//        // Yarï¿½ï¿½apï¿½ dï¿½rt yï¿½ndeki maksimum uzaklï¿½klarï¿½n ortalamasï¿½ olarak al
 //        float rFront = maxFrontDist;
 //        float rUp = maxUpDist;
 //        float rRight = maxRightDist;
@@ -369,6 +369,9 @@
 //    }
 //}
 
+using System.Collections.Generic;
+using Firebase.Auth;
+using Firebase.Firestore;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR;
@@ -391,7 +394,20 @@ public class ConfigurationSC : MonoBehaviour
 
     // base pozisyon ve her yon icin max uzaklik
     private Vector3 _basePosition;
-    private float _maxFrontDist, _maxUpDist, _maxRightDist, _maxLeftDist;
+    private float _maxFrontDist,
+        _maxUpDist,
+        _maxRightDist,
+        _maxLeftDist;
+
+    FirebaseFirestore db;
+    public FirebaseUser user;
+    public FirebaseAuth auth;
+
+    void Start()
+    {
+        db = FirebaseFirestore.DefaultInstance;
+        auth = FirebaseAuth.DefaultInstance;
+    }
 
     void Update()
     {
@@ -476,7 +492,7 @@ public class ConfigurationSC : MonoBehaviour
 
                 case 5:
                     infoText.text = "Olcumler tamamlandi!";
-                    Invoke("GoMainScene",1f);
+                    Invoke("GoMainScene", 1f);
                     CreateShoulderCollider();
                     break;
             }
@@ -488,6 +504,40 @@ public class ConfigurationSC : MonoBehaviour
     public void GoMainScene()
     {
         SceneTransitionManager.singleton.GoToSceneAsync(0);
+    }
+
+    public void SaveData(
+        string userName,
+        string status,
+        float calibration,
+        string hasCurrentTask,
+        string bestScore,
+        string bestTime
+    )
+    {
+        DocumentReference docRef = db.Collection("memberlist").Document(userName);
+        Dictionary<string, object> Data = new Dictionary<string, object>
+        {
+            { "status", status },
+            { "calibration", calibration.ToString() },
+            { "hasCurrentTask", hasCurrentTask },
+            { "bestScore", bestScore },
+            { "bestTime", bestTime }
+        };
+
+        docRef
+            .SetAsync(Data)
+            .ContinueWith(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    Debug.Log("Data saved to Firestore.");
+                }
+                else
+                {
+                    Debug.LogError("Error saving data: " + task.Exception);
+                }
+            });
     }
 
     private void CreateShoulderCollider()
@@ -506,8 +556,10 @@ public class ConfigurationSC : MonoBehaviour
         sph.isTrigger = true;
 
         // yari cap ortalama uzaklik
-        DataBaseMuhammet.colliderRadius = (_maxFrontDist + _maxUpDist + _maxRightDist + _maxLeftDist) * 0.25f;
+        DataBaseMuhammet.colliderRadius =
+            (_maxFrontDist + _maxUpDist + _maxRightDist + _maxLeftDist) * 0.25f;
         sph.radius = (_maxFrontDist + _maxUpDist + _maxRightDist + _maxLeftDist) * 0.25f;
 
+        SaveData(user.DisplayName, "true", DataBaseMuhammet.colliderRadius, "false", "0", "0");
     }
 }

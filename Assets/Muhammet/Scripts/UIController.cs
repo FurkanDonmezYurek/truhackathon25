@@ -4,13 +4,12 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public Slider slider;
-    
+
     void Start()
     {
         slider.value = 0;
 
-        slider.maxValue = GameObject.FindGameObjectsWithTag("Apple").Length;
-
+        slider.maxValue = DataBaseMuhammet.appleCount;  
     }
 
     public void OnAppleAdd()
@@ -20,5 +19,5 @@ public class UIController : MonoBehaviour
     public void OnAppleExit()
     {
         slider.value--;
-    }
+    }          
 }

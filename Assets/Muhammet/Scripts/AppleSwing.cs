@@ -27,6 +27,7 @@ public class AppleSwing : MonoBehaviour
                 // zamanla sinüs degeri hesapla
                 float angle = amplitude * Mathf.Sin(Time.time * frequency);
                 // objeyi Z ekseni etrafinda saga-sola cevir
+                
                 transform.localRotation = startRotation * Quaternion.Euler(0f, 0f, angle);
             }
         }

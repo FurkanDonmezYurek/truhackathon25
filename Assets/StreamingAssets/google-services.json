@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "7653119682",
+    "project_id": "truhackathon",
+    "storage_bucket": "truhackathon.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7653119682:android:8de2e353d8e06606500d5b",
+        "android_client_info": {
+          "package_name": "com.Blix.TruHackathon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgWY5y37H3rPiAWNe02gJMHAk9oNRlyYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
