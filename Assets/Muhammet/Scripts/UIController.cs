@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     {
         slider.value = 0;
 
-        slider.maxValue = GameObject.FindGameObjectsWithTag("Apple").Length;
+        slider.maxValue = DataBaseMuhammet.appleCount;
 
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BasketSC : MonoBehaviour
 {
-    public int appleCount = 0;
+    public int appleCount = DataBaseMuhammet.appleCount;
 
     public UIController uiController;
 

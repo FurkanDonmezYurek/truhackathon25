@@ -16,7 +16,7 @@ public class AppleSpawn : MonoBehaviour
         Debug.Log("ColliderSpawned");
         var go = new GameObject("ShoulderReachCollider");
         go.transform.parent = transform;
-        go.transform.position = DataBaseMuhammet.shoulderPos;
+        go.transform.localPosition = Vector3.zero;
 
 
         var sph = go.AddComponent<SphereCollider>();
@@ -24,7 +24,7 @@ public class AppleSpawn : MonoBehaviour
         var spawner = go.AddComponent<SpawnerColliderSC>();
         spawner.applePref = applePref;
         sph.radius = DataBaseMuhammet.colliderRadius;
-
+        
     }
 
 
