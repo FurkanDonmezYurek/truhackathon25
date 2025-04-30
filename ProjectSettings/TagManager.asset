@@ -10,6 +10,7 @@ TagManager:
   - Destroyer
   - Apple
   - AppleSpawnPosition
+  - BadApple
   layers:
   - Default
   - TransparentFX
