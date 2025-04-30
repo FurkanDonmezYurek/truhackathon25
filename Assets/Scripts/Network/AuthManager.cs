@@ -33,6 +33,7 @@ public class AuthManager : MonoBehaviour
     public TMP_Text warningRegisterText;
 
     FirebaseFirestore db;
+    public GameStartMenu gameStartMenu;
 
     // void Awake()
     // {
@@ -99,7 +100,6 @@ public class AuthManager : MonoBehaviour
                     if (document.Id == User.DisplayName)
                     {
                         findDoc = true;
-                        Debug.Log("sa");
                         // Verileri Dictionary olarak alıyoruz
                         Dictionary<string, object> Data = document.ToDictionary();
 
@@ -107,7 +107,7 @@ public class AuthManager : MonoBehaviour
                         float calibration = float.Parse(Data["calibration"].ToString());
                         string hasCurrentTask = Data["hasCurrentTask"].ToString();
                         string bestScore = Data["bestScore"].ToString();
-                        string bestTime = Data["bestScore"].ToString();
+                        string bestTime = Data["bestTime"].ToString();
                     }
                 }
                 if (findDoc == false)
@@ -300,7 +300,7 @@ public class AuthManager : MonoBehaviour
                     {
                         //Username is now set
                         //Now return to login screen
-                        // UIManager.instance.LoginScreen();
+                        gameStartMenu.EnableLogInPanel();
                         warningRegisterText.text = "";
                     }
                 }

@@ -1765,6 +1765,7 @@ MonoBehaviour:
   passwordRegisterField: {fileID: 1669873508}
   passwordRegisterVerifyField: {fileID: 1059862293}
   warningRegisterText: {fileID: 2053121852}
+  gameStartMenu: {fileID: 1212402847}
 --- !u!4 &400836662
 Transform:
   m_ObjectHideFlags: 0
@@ -5606,6 +5607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1163744328}
+  LogInPanel: {fileID: 386367120}
   options: {fileID: 96565793}
   about: {fileID: 79910497}
   startButton: {fileID: 448256129}

@@ -7,6 +7,7 @@ public class GameStartMenu : MonoBehaviour
 {
     [Header("UI Pages")]
     public GameObject mainMenu;
+    public GameObject LogInPanel;
     public GameObject options;
     public GameObject about;
 
@@ -21,7 +22,6 @@ public class GameStartMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //Hook events
         startButton.onClick.AddListener(StartGame);
         optionButton.onClick.AddListener(EnableOption);
@@ -52,18 +52,28 @@ public class GameStartMenu : MonoBehaviour
         about.SetActive(false);
     }
 
+    public void EnableLogInPanel()
+    {
+        LogInPanel.SetActive(true);
+        mainMenu.SetActive(false);
+        options.SetActive(false);
+        about.SetActive(false);
+    }
+
     public void EnableMainMenu()
     {
         mainMenu.SetActive(true);
         options.SetActive(false);
         about.SetActive(false);
     }
+
     public void EnableOption()
     {
         mainMenu.SetActive(false);
         options.SetActive(true);
         about.SetActive(false);
     }
+
     public void EnableAbout()
     {
         mainMenu.SetActive(false);
