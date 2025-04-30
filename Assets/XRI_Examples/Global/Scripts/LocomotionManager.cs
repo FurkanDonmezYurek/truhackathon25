@@ -105,13 +105,13 @@ namespace UnityEngine.XR.Content.Interaction
             set => m_TwoHandedGrabMoveProvider = value;
         }
 
-        [SerializeField]
-        [Tooltip("Reference to the manager that mediates the left-hand controllers.")]
-        ActionBasedControllerManager m_LeftHandManager;
+        //[SerializeField]
+        //[Tooltip("Reference to the manager that mediates the left-hand controllers.")]
+        //ActionBasedControllerManager m_LeftHandManager;
 
-        [SerializeField]
-        [Tooltip("Reference to the manager that mediates the right-hand controllers.")]
-        ActionBasedControllerManager m_RightHandManager;
+        //[SerializeField]
+        //[Tooltip("Reference to the manager that mediates the right-hand controllers.")]
+        //ActionBasedControllerManager m_RightHandManager;
 
         [SerializeField]
         [Tooltip("Controls which movement control scheme to use for the left hand.")]
@@ -223,7 +223,7 @@ namespace UnityEngine.XR.Content.Interaction
                 m_TwoHandedGrabMoveProvider.rightGrabMoveProvider.useGravity = value;
                 if (value)
                 {
-                    m_DynamicMoveProvider.gravityApplicationMode = k_DefaultGravityApplicationMode;
+                    //m_DynamicMoveProvider.gravityApplicationMode = k_DefaultGravityApplicationMode;
                     m_TwoHandedGrabMoveProvider.gravityMode = k_DefaultGravityMode;
                     m_TwoHandedGrabMoveProvider.leftGrabMoveProvider.gravityMode = k_DefaultGravityMode;
                     m_TwoHandedGrabMoveProvider.rightGrabMoveProvider.gravityMode = k_DefaultGravityMode;
@@ -286,7 +286,7 @@ namespace UnityEngine.XR.Content.Interaction
             m_TwoHandedGrabMoveProvider.rightGrabMoveProvider.useGravity = m_UseGravity;
             if (m_UseGravity)
             {
-                m_DynamicMoveProvider.gravityApplicationMode = k_DefaultGravityApplicationMode;
+                //m_DynamicMoveProvider.gravityApplicationMode = k_DefaultGravityApplicationMode;
                 m_TwoHandedGrabMoveProvider.gravityMode = k_DefaultGravityMode;
                 m_TwoHandedGrabMoveProvider.leftGrabMoveProvider.gravityMode = k_DefaultGravityMode;
                 m_TwoHandedGrabMoveProvider.rightGrabMoveProvider.gravityMode = k_DefaultGravityMode;
@@ -304,14 +304,14 @@ namespace UnityEngine.XR.Content.Interaction
 
         void SetMoveScheme(LocomotionType scheme, bool leftHand)
         {
-            var targetHand = leftHand ? m_LeftHandManager : m_RightHandManager;
-            targetHand.smoothMotionEnabled = (scheme == LocomotionType.MoveAndStrafe);
+            //var targetHand = leftHand ? m_LeftHandManager : m_RightHandManager;
+            //targetHand.smoothMotionEnabled = (scheme == LocomotionType.MoveAndStrafe);
         }
 
         void SetTurnStyle(TurnStyle style, bool leftHand)
         {
-            var targetHand = leftHand ? m_LeftHandManager : m_RightHandManager;
-            targetHand.smoothTurnEnabled = (style == TurnStyle.Smooth);
+            //var targetHand = leftHand ? m_LeftHandManager : m_RightHandManager;
+            //targetHand.smoothTurnEnabled = (style == TurnStyle.Smooth);
         }
     }
 }

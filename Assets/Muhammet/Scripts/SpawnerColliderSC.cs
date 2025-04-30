@@ -8,6 +8,7 @@ using System.Collections;
 public class SpawnerColliderSC : MonoBehaviour
 {
     public GameObject applePref;
+    public GameObject badApplePref;
 
     private List<Vector3> spawnPositions = new List<Vector3>();
 
@@ -52,6 +53,15 @@ public class SpawnerColliderSC : MonoBehaviour
                     {
                         int random = Random.Range(1, spawnPositions.Count - i);
                         Instantiate(applePref, spawnPositions[random], Quaternion.identity);
+                        spawnPositions.RemoveAt(random);
+                        //yield return;
+                    }
+
+                    for (int i = 0; i < DataBaseMuhammet.badAppleCount; i++)
+                    {
+                        int random = Random.Range(1, spawnPositions.Count - i);
+                        Instantiate(badApplePref, spawnPositions[random], Quaternion.identity);
+                        spawnPositions.RemoveAt(random);
                         //yield return;
                     }
                 }

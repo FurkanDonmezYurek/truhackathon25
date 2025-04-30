@@ -3,6 +3,7 @@ using UnityEngine;
 public class AppleSpawn : MonoBehaviour
 {   
     public GameObject applePref;
+    public GameObject badApplePref;
     void Start()
     {
         CreateShoulderCollider();
@@ -23,6 +24,7 @@ public class AppleSpawn : MonoBehaviour
         sph.isTrigger = true;
         var spawner = go.AddComponent<SpawnerColliderSC>();
         spawner.applePref = applePref;
+        spawner.badApplePref = badApplePref;
         sph.radius = DataBaseMuhammet.colliderRadius;
         
     }
